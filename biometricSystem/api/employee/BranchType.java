@@ -4,7 +4,6 @@ package com.biometricsystem.api.employee;
 public enum BranchType {
 
     //delete this part and add the part below after the database has been updated
-
     UNDEFINED ("Undefined", null),
     TA("Tel Aviv", "A"),
     SF("San Francisco", "B"),
