@@ -2,6 +2,7 @@ package com.biometricsystem.api.employee;
 
 
 public enum EmployeeType {
+    
     UNDEFINED ("Undefined"),
     STANDARD ("Standard"),
     ADMIN ("Admin");
