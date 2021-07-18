@@ -5,7 +5,6 @@ import java.awt.image.DataBufferByte;
 import java.io.File;
 import javax.imageio.ImageIO;
 import javax.swing.*;
-
 import com.biometricsystem.image.CapturedFrame;
 import org.opencv.core.*;
 
