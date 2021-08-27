@@ -7,8 +7,8 @@ id_to_name_dict_load = pickle.load(open("..\\id_to_name_dict.pkl", "rb"))
 
 class LiveFeed:
 
-    face_recognition_threshold=0.9
-    save_image_in_db_threshold=0.95
+    face_recognition_threshold=0.8
+    save_image_in_db_threshold=0.9
 
 
     def __init__(self,db):
