@@ -48,5 +48,5 @@ def make_df(max_pics=10): # make only df and insert to mongo -> check for valid 
 if __name__ == "__main__":
 
     df,cls2name = make_df(6)
-    df.to_pickle("database\\db_df.pkl")
+    df.to_pickle("db_df.pkl")
     pickle.dump(cls2name,open("id_to_name_dict.pkl","wb"))
