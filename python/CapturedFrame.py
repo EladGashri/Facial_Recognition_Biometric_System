@@ -9,7 +9,7 @@ class CapturedFrame(ImageInSet):
     #ann_model = InceptionResnetV1(classify=True, pretrained='vggface2', num_classes=len(id_to_name_dict_load.keys()))
     #ann_model.load_state_dict(torch.load("ann_model.pth",map_location=torch.device("cpu")))
     ann_model = NewNet(num_classes=len(id_to_name_dict_load.keys()))
-    ann_model.load_state_dict(torch.load('..\\ANN\\ann_model.pth',map_location=torch.device("cpu")))
+    ann_model.load_state_dict(torch.load('ann_model.pth',map_location=torch.device("cpu")))
 
 
     def __init__(self,values):
