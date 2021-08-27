@@ -20,7 +20,7 @@ public class ModelService {
     @Autowired
     private ImagesService imagesService;
     public final static String PYTHON_PATH=System.getProperty("user.home")+"\\Anaconda3\\python";
-    public final static String SCRIPT_PATH=System.getProperty("user.home")+"\\IdeaProjects\\BiometricSystem\\src\\main\\python\\ANN\\new_model.py";
+    public final static String SCRIPT_PATH=System.getProperty("user.home")+"\\IdeaProjects\\FacialRecognitionBiometricSystem\\src\\main\\python\\ANN\\new_model.py";
     public final static String MODELS_DIRECTORY="src\\main\\resources\\models";
     public final static String MODEL_FILE_EXTENSION=".zip";
 
