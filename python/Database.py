@@ -111,5 +111,5 @@ database = Database()
 if __name__ == "__main__":
 
     db_df = pickle.load(open("db_df.pkl", "rb"))
-    id_to_name_dict = pickle.load(open("../id_to_name_dict.pkl", "rb"))
+    id_to_name_dict = pickle.load(open("id_to_name_dict.pkl", "rb"))
     database.create_database_from_dataframe(db_df,id_to_name_dict)
