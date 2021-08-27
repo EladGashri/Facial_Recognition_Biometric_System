@@ -7,7 +7,7 @@ from tqdm import tqdm
 
 def make_df(max_pics=10): # make only df and insert to mongo -> check for valid -> print not the valid -> split to trn/val -> train the valids
     root_dir=os.getcwd()
-    directory_name = '../resources/static/images/dataset'
+    directory_name = '..\\resources\\static\\images\\dataset'
     #dataset_dir = os.path.join(root_dir, input("please enter the dataset directory path")) \
      #       if directory_name is None else os.path.join(root_dir, directory_name)
     dataset_dir = root_dir + directory_name
