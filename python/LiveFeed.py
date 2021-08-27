@@ -3,7 +3,7 @@ from datetime import datetime
 from bson.son import SON
 
 
-id_to_name_dict_load = pickle.load(open("..\\id_to_name_dict.pkl", "rb"))
+id_to_name_dict_load = pickle.load(open("id_to_name_dict.pkl", "rb"))
 
 class LiveFeed:
 
