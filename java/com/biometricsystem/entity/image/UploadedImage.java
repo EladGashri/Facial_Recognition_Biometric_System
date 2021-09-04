@@ -9,7 +9,7 @@ public class UploadedImage extends ImageForIdentification {
         super(Imgcodecs.imdecode(new MatOfByte(frameValuesAsBytesArray),Imgcodecs.IMREAD_UNCHANGED));
     }
 
-    public static boolean imageIsCorrectType(String type) {
+    public static boolean isImageCorrectType(String type) {
         return (type.equals("image/jpg") || type.equals("image/jpeg") || type.equals("image/png"));
     }
 
