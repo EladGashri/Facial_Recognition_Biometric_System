@@ -27,7 +27,7 @@ public class ModelService {
     public UploadedImage identifyImage(MultipartFile image) throws UnsupportedMediaTypeStatusException, IOException {
         System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
         String type = image.getContentType();
-        if (UploadedImage.imageIsCorrectType(type)) {
+        if (UploadedImage.isImageCorrectType(type)) {
             UploadedImage uploadedImage = new UploadedImage(image.getBytes());
             uploadedImage.initializeFaceImage();
             uploadedImage.identify(faceClassifier);
