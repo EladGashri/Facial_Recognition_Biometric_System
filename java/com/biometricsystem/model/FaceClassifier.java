@@ -60,7 +60,7 @@ public class FaceClassifier {
         try {
             return predictor.predict(image);
         } catch (TranslateException e) {
-            System.err.println(e.getMessage());
+            e.printStackTrace();
             return null;
         }
     }
