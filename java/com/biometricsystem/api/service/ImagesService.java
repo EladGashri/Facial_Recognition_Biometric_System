@@ -61,7 +61,7 @@ public class ImagesService {
 
     public boolean addImage(Long employeeNumber, MultipartFile image) throws MongoException, IOException, UnsupportedMediaTypeStatusException {
         String type = image.getContentType();
-        if (UploadedImage.imageIsCorrectType(type)){
+        if (UploadedImage.isImageCorrectType(type)){
             UploadedImage uploadedImage = new UploadedImage(image.getBytes());
             uploadedImage.initializeFaceImage();
             if (uploadedImage.wasAFaceDetected()){
