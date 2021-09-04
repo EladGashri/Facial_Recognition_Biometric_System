@@ -19,7 +19,7 @@ public class Database {
     private MongoCollection<Document> employeesCollection;
     private MongoCollection<Document> imagesCollection;
 
-    private Database(){
+    public Database(){
         try {
             Logger mongoLogger = Logger.getLogger("org.mongodb.driver");
             mongoLogger.setLevel(Level.OFF);
