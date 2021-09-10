@@ -17,4 +17,5 @@ public class BiometricSystem {
         System.setProperty("java.awt.headless", "false");
         ConfigurableApplicationContext app=SpringApplication.run(BiometricSystem.class, args);
     }
+    
 }
