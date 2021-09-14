@@ -1,4 +1,4 @@
-Industry project developed in collaboration with Amdocs. Designed as a facial recognition biometric system for a large corporation with multiple branches.
+Facial recognition biometric system developed in collaboration with Amdocs according to industry standards.
 
 Multithreaded live feed that registers employees' attendance from multiple cameras in different locations simultaneously. Written with Java.
 
