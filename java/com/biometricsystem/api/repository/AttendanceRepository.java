@@ -77,7 +77,7 @@ public class AttendanceRepository {
         Document employeesEntryFind=new Document("employee id",employee.getId()).append("date",dateDocument);
         Document attendanceQuery=database.getAttendanceCollection().find(employeesEntryFind).first();
         if(attendanceQuery!=null) {
-            if ((attendanceQuery.get("entry") == null) || (attendanceQuery.get("entry") != null && AttendancesService.OVERRIDE_ATTENDANCE))  {
+            if ((attendanceQuery.get("entry") == null) || (attendanceQuery.get("entry") != null && AttendancesService.OVERWRITE_ATTENDANCE))  {
                 Document exitDocument = (Document) attendanceQuery.get("exit");
                 if (exitDocument!=null) {
                     Time exitTime = new Time(exitDocument.getInteger("hour"), exitDocument.getInteger("minute"), exitDocument.getInteger("second"));
@@ -96,8 +96,8 @@ public class AttendanceRepository {
                     System.out.println("database entry updated for " + employee.getName());
                     return true;
                 }
-            } else if (attendanceQuery.get("entry") != null && !AttendancesService.OVERRIDE_ATTENDANCE) {
-                System.out.println(employee.getName() + " already registered entry today. Must set OVERRIDE_ATTENDANCE to true in order to update entry");
+            } else if (attendanceQuery.get("entry") != null && !AttendancesService.OVERWRITE_ATTENDANCE) {
+                System.out.println(employee.getName() + " already registered entry today. Must set OVERWRITE_ATTENDANCE to true in order to update entry");
                 return false;
             }
         }else{
@@ -110,11 +110,11 @@ public class AttendanceRepository {
 
     public boolean registerExitToDatabase(Employee employee,LocalDate date,Time exitTime) throws Time.TimeException{
         Document dateDocument = getDateDocument(date);
-        if (!AttendancesService.OVERRIDE_ATTENDANCE) {
+        if (!AttendancesService.OVERWRITE_ATTENDANCE) {
             Document findAlreadyRegisteredExit = new Document("employee id", employee.getId()).append("date", dateDocument).append("exit", new Document("$ne", null));
             Document exitQuery = database.getAttendanceCollection().find(findAlreadyRegisteredExit).first();
             if (exitQuery != null) {
-                System.out.println(employee.getName() + " already registered exit today. Must set OVERRIDE_ATTENDANCE to true in order to update exit.");
+                System.out.println(employee.getName() + " already registered exit today. Must set OVERWRITE_ATTENDANCE to true in order to update exit.");
                 return false;
             }
         }
