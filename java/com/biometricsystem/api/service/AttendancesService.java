@@ -18,7 +18,7 @@ public class AttendancesService {
     private AttendanceRepository attendancesRepository;
     @Autowired
     private EmployeeService employeeService;
-    public final static boolean OVERRIDE_ATTENDANCE=false;
+    public final static boolean OVERWRITE_ATTENDANCE=false;
 
     public AttendanceReport getAttendanceReport(long employeeNumber, LocalDate startDate, LocalDate endDate) throws AttendanceReport.AttendanceReportException, NullPointerException {
         long employeeId=employeeService.getId(employeeNumber);
@@ -35,7 +35,7 @@ public class AttendancesService {
     }
 
     public boolean needToRegisterEntryToday(Employee employee){
-        return OVERRIDE_ATTENDANCE||attendancesRepository.getEmployeeEntry(employee,LocalDate.now())==null;
+        return OVERWRITE_ATTENDANCE||attendancesRepository.getEmployeeEntry(employee,LocalDate.now())==null;
     }
 
     public boolean checkAndRegisterEntry(Employee employee) throws Time.TimeException {
