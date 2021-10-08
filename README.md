@@ -1,4 +1,4 @@
-The Facial Recognition Biometric System project is a final project in the "High-Tech Sciences" B.Sc. degree in Tel Aviv University's Faculty of Engineering. It was developed in collaboration with Amdocs.
+The Facial Recognition Biometric System project is a final project in Tel Aviv University's Faculty of Engineering. It was developed in collaboration with Amdocs.
 
 In this project we designed and implemented a biometric system that uses a facial recognition algorithm. The algorithm was developed by us from scratch with Python and Pytorch.
 
