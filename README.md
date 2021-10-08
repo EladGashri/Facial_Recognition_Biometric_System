@@ -21,4 +21,5 @@ One of the main purposes of this system is to function as an attendance system. 
 The system can be interacted with by sending HTTP requests to its REST API. A standard employee can only receive information about himself. An admin can receive information about all the employees. The CTO can also use the facial recognition algorithm to identify an image and to retrain the algorithm. The REST API was implemented with Java, Spring Boot and Spring Security.
 
 
-API documentation: https://documenter.getpostman.com/view/14799541/UUy1emcF
+A full documentation of the Facial Recognition Biometric System REST API with detailed examples for every endpoint can be found at the following Postman collection document:
+https://documenter.getpostman.com/view/14799541/UUy1emcF
