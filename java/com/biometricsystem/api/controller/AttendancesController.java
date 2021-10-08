@@ -36,7 +36,7 @@ public class AttendancesController {
             if(attendancesService.registerEntry(requestBody)) {
                 return new ResponseEntity<>("Entry added", HttpStatus.CREATED);
             }else{
-                return new ResponseEntity<>("Employee already has registered entry for " +requestBody.get("date")+". Must set OVERRIDE_ATTENDANCE to true in order to update entry.", HttpStatus.OK);
+                return new ResponseEntity<>("Employee already has registered entry for " +requestBody.get("date")+". Must set OVERWRITE_ATTENDANCE to true in order to update entry.", HttpStatus.OK);
             }
         }catch (Time.TimeException e){
             return new ResponseEntity<>("Entry is after registered exit", HttpStatus.BAD_REQUEST);
@@ -49,7 +49,7 @@ public class AttendancesController {
             if(attendancesService.checkAndRegisterEntry(employeeNumber)) {
                 return new ResponseEntity<>("Entry added", HttpStatus.CREATED);
             }else{
-                return new ResponseEntity<>("Employee already has registered entry for " +LocalDate.now()+". Must set OVERRIDE_ATTENDANCE to true in order to update entry.", HttpStatus.OK);
+                return new ResponseEntity<>("Employee already has registered entry for " +LocalDate.now()+". Must set OVERWRITE_ATTENDANCE to true in order to update entry.", HttpStatus.OK);
             }
         }catch (Time.TimeException e){
             return new ResponseEntity<>("Entry is after registered exit", HttpStatus.BAD_REQUEST);
@@ -62,7 +62,7 @@ public class AttendancesController {
             if(attendancesService.registerExit(requestBody)) {
                 return new ResponseEntity<>("Exit added", HttpStatus.CREATED);
             }else{
-                return new ResponseEntity<>("Employee already registered exit for " +requestBody.get("date")+". Must set OVERRIDE_ATTENDANCE to true in order to update exit.", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Employee already registered exit for " +requestBody.get("date")+". Must set OVERWRITE_ATTENDANCE to true in order to update exit.", HttpStatus.BAD_REQUEST);
             }
         }catch (Time.TimeException e){
             return new ResponseEntity<>("Exit is before registered entry", HttpStatus.BAD_REQUEST);
@@ -75,7 +75,7 @@ public class AttendancesController {
             if(attendancesService.registerExitNow(employeeNumber)) {
                 return new ResponseEntity<>("Exit added", HttpStatus.CREATED);
             }else{
-                return new ResponseEntity<>("Employee already has registered exit for " +LocalDate.now()+". Must set OVERRIDE_ATTENDANCE to true in order to update entry.", HttpStatus.OK);
+                return new ResponseEntity<>("Employee already has registered exit for " +LocalDate.now()+". Must set OVERWRITE_ATTENDANCE to true in order to update entry.", HttpStatus.OK);
             }
         }catch (Time.TimeException e){
             return new ResponseEntity<>("Exit is before registered entry", HttpStatus.BAD_REQUEST);
