@@ -16,28 +16,20 @@ public class ModelUpdaterRequestSender {
 
     @Autowired
     private JwtRepository jwtRepository;
-    private final CloseableHttpClient client = HttpClients.createDefault();
-    /*private final HttpClient client=HttpClient.newHttpClient();
-    private HttpRequest request;*/
+    private final CloseableHttpClient client=HttpClients.createDefault();
     private HttpPost httpPost;
-    private final static String MODEL_TRAINING_URI= BiometricSystem.API_HOST+"/model/training";
+    private final static String MODEL_TRAINING_URI=BiometricSystem.API_HOST+"/model/training";
 
     public ModelUpdaterRequestSender(JwtRepository jwtRepository){
         this.jwtRepository=jwtRepository;
         httpPost=new HttpPost(MODEL_TRAINING_URI);
         String jwt=jwtRepository.getCtoJwt();
-        /*request = HttpRequest.newBuilder().
-                POST(HttpRequest.BodyPublishers.ofString(null)).
-                header(JwtUtil.HEADER,JwtUtil.TOKEN_PREFIX+jwt).
-                uri(URI.create(uri)).
-                build();*/
         httpPost.setHeader(JwtUtil.HEADER,JwtUtil.TOKEN_PREFIX+jwt);
     }
 
-    public /*HttpResponse<String>*/ CloseableHttpResponse sendRequest() throws IOException, InterruptedException {
+    public CloseableHttpResponse sendRequest() throws IOException, InterruptedException{
         System.out.println("Sending a request to train the model");
         return client.execute(httpPost);
-        /*return client.send(request, HttpResponse.BodyHandlers.ofString());*/
     }
 
 }
