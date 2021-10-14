@@ -14,7 +14,7 @@ class Employee:
     MINIMUM_NUMBER_OF_IMAGES_FOR_MODEL=4
     BRANCHES=["TA", "SF", "TO", "BN"]
 
-    def __init__(self,id,employee_number,name,images_directory_path, type, number_of_images):
+    def __init__(self,id,employee_number,name,images_directory_path, employee_type, number_of_images):
         self.id=id
         self.employee_number=employee_number
         self.name=name
@@ -22,7 +22,7 @@ class Employee:
         self.number_of_images=number_of_images
         self.branch=Employee.get_random_branch()
         self.model_class=-1
-        self.employee_type=type.value
+        self.employee_type=employee_type.value
 
     @classmethod
     def get_random_branch(cls):
