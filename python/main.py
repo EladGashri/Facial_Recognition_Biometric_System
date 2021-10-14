@@ -9,7 +9,7 @@ def make_df(max_pics=10): # make only df and insert to mongo -> check for valid 
     root_dir=os.getcwd()
     directory_name = '..\\resources\\static\\images\\dataset'
     dataset_dir = root_dir + directory_name
-    df = pd.DataFrame(columns=['path', 'name', 'type'])
+    df = pd.DataFrame(columns=['path', 'name', 'employee_type'])
     directories = list(filter(lambda x: os.path.isdir(os.path.join('\', dataset_dir)), os.listdir('\')))
     loop = tqdm(directories, position=0, leave=True)
     for dir in loop:
@@ -18,9 +18,9 @@ def make_df(max_pics=10): # make only df and insert to mongo -> check for valid 
         files = os.listdir(dir_path)
         images_paths = [os.path.join(dir_path, file) for file in files if ((len(file.split('.')) == 2) and (file.split('.')[1] in ['jpg', 'jpeg', 'png']))]
         for img in images_paths:
-            df = df.append({'path': img, 'type':parent ,'name':" ".join(dir.split("_"))}, ignore_index=True)
+            df = df.append({'path': img, 'employee_type':parent ,'name':" ".join(dir.split("_"))}, ignore_index=True)
         
-    df = df.groupby(by='name',as_index=False).agg({'path': lambda x: list(x), 'type': lambda x: list(x)[0]})
+    df = df.groupby(by='name',as_index=False).agg({'path': lambda x: list(x), 'employee_type': lambda x: list(x)[0]})
     dict_cls2name = dict(zip([i for i in range(len(df))], df['name']))
 
     valid, indexes, pic_num = list(), list(), list()
