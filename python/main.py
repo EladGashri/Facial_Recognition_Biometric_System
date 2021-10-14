@@ -8,20 +8,19 @@ from tqdm import tqdm
 def make_df(max_pics=10): # make only df and insert to mongo -> check for valid -> print not the valid -> split to trn/val -> train the valids
     root_dir=os.getcwd()
     directory_name = '..\\resources\\static\\images\\dataset'
-    #dataset_dir = os.path.join(root_dir, input("please enter the dataset directory path")) \
-     #       if directory_name is None else os.path.join(root_dir, directory_name)
     dataset_dir = root_dir + directory_name
-    df = pd.DataFrame(columns=['path','name'])
-    directories = [dir for dir in os.listdir(dataset_dir) if not '.' in dir]
-    loop = tqdm(directories, position=0,leave=True)
+    df = pd.DataFrame(columns=['path', 'name', 'type'])
+    directories = list(filter(lambda x: os.path.isdir(os.path.join('\', dataset_dir)), os.listdir('\')))
+    loop = tqdm(directories, position=0, leave=True)
     for dir in loop:
-        dir_path = os.path.join(dataset_dir, dir)
+        parent = os.path.dirname(dir)                                                          
+        dir_path = os.path.join(dataset_dir, parent, dir)
         files = os.listdir(dir_path)
         images_paths = [os.path.join(dir_path, file) for file in files if ((len(file.split('.')) == 2) and (file.split('.')[1] in ['jpg', 'jpeg', 'png']))]
         for img in images_paths:
-            df = df.append({'path': img,'name':" ".join(dir.split("_"))}, ignore_index=True)
-
-    df = df.groupby(by='name',as_index=False).agg({'path': lambda x: list(x)})
+            df = df.append({'path': img, 'type':parent ,'name':" ".join(dir.split("_"))}, ignore_index=True)
+        
+    df = df.groupby(by='name',as_index=False).agg({'path': lambda x: list(x), 'type': lambda x: list(x)[0]})
     dict_cls2name = dict(zip([i for i in range(len(df))], df['name']))
 
     valid, indexes, pic_num = list(), list(), list()
