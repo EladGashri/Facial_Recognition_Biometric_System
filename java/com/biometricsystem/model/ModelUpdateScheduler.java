@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ModelUpdateScheduler {
 
-    private static final int INITIAL_DELAY_HOURS = 12;
+    private static final int INITIAL_DELAY_HOURS = 0;
     private static final int FIXED_RATE_HOURS = 24;
 
     @Autowired
