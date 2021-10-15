@@ -13,7 +13,9 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 public class BiometricSystem {
 
-    public final static String API_HOST = "http://127.0.0.1:8080";
+    private final static String API_ADDRESS = LiveFeedManager.LIVE_FEED_SERVER_ADDRESS;
+    private final static String API_PORT = "8080";
+    public final static String API_HOST = "http://"+API_ADDRESS+":"+API_PORT;
 
     public static void main(String[] args) {
         LoggerContext logger=(LoggerContext) LoggerFactory.getILoggerFactory();
