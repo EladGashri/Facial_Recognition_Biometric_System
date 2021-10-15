@@ -17,17 +17,15 @@ public class ModelUpdater extends TimerTask {
     @Override
     public void run() {
         try {
-            /*HttpResponse<String>*/ CloseableHttpResponse response= modelUpdaterRequestSender.sendRequest();
+            CloseableHttpResponse response= modelUpdaterRequestSender.sendRequest();
             checkResponse(response);
         } catch (IOException|InterruptedException|HttpServerErrorException e) {
             System.err.println("Could not train model");
         }
     }
 
-    private void checkResponse(/*HttpResponse<String>*/ CloseableHttpResponse response) throws HttpServerErrorException{
-        /*if (response.statusCode()!=HttpStatus.OK.value()){*/
+    private void checkResponse(CloseableHttpResponse response) throws HttpServerErrorException{
         if (response.getStatusLine().getStatusCode()==HttpStatus.OK.value()){
-            /*throw new HttpServerErrorException(HttpStatus.valueOf(response.statusCode()));*/
             throw new HttpServerErrorException(HttpStatus.valueOf(response.getStatusLine().getStatusCode()));
         }
     }
