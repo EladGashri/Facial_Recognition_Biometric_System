@@ -11,7 +11,7 @@ class Database:
     DATABASE_ADDRESS = 'localhost:27017'
 
     def __init__(self):
-        self.__client = MongoClient('mongodb://'+DATABASE_ADDRESS)
+        self.__client = MongoClient(''.join('mongodb://',DATABASE_ADDRESS))
         with self.__client:
             self.__database = self.__client["biometric_system"]
             self.employees_collection = self.__database["employees"]
