@@ -18,11 +18,12 @@ public class Database {
     private MongoCollection<Document> attendanceCollection;
     private MongoCollection<Document> employeesCollection;
     private MongoCollection<Document> imagesCollection;
+    private final static String DATABASE_ADDRESS = "localhost:27017";
 
     public Database(){
         try {
             Logger.getLogger("org.mongodb.driver").setLevel(Level.OFF);
-            MongoClient client = MongoClients.create("mongodb://localhost:27017/");
+            MongoClient client = MongoClients.create("mongodb://"+DATABASE_ADDRESS);
             MongoDatabase database = client.getDatabase("biometric_system");
             attendanceCollection = database.getCollection("attendances");
             employeesCollection = database.getCollection("employees");
