@@ -22,15 +22,20 @@ class Database:
         attendances_list = list()
 
         for index in range(db_df.shape[0]):
+            
+            employee_type_str = db_df.iloc[index]['employee_type']
+            match employee_type_str:
+                case 'standard':
+                    employee_type = EmployeeType.STANDARD
+               case 'admin':
+                   employee_type = EmployeeType.ADMIN
+               case 'cto':
+                   employee_type = EmployeeType.CTO
 
             employee = Employee(index, index, id_to_name_dict[index],
-                                '/'.join(db_df.iloc[index]['path'][0].split('\\')[:-1]), int(db_df['pic_num'][index]))
+                                '/'.join(db_df.iloc[index]['path'][0].split('\\')[:-1]), employee_type, int(db_df['pic_num'][index]))
 
             employees_list.append(database.make_employee_doc(employee))
-
-            employees_list[0]["employee type"] = EmployeeType.CTO.value
-            for employee_index in range(1, len(employees_list), 100):
-                employees_list[employee_index]["employee type"] = EmployeeType.ADMIN.value
 
             for path, face_indexes in zip(db_df.iloc[index]['path'], db_df.iloc[index]['indexes']):
                 images_list.append(database.make_image_doc(path, employee, list(map(float, face_indexes))))
