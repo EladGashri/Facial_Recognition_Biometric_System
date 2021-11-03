@@ -7,7 +7,7 @@ import java.io.File;
 public final class LiveFeedManager {
 
     public final static String LIVE_FEED_SERVER_ADDRESS="localhost";
-    public final static int LIVE_FEED_SERVER_PORT = 10000;
+    public final static int LIVE_FEED_SERVER_PORT = 5000;
     public final static File FACES_RECOGNIZED_DIRECTORY=new File("src\\main\\resources\\static\\images\\faces recognized");
     public final static double FACE_RECOGNITION_THRESHOLD=0.9;
     public final static int MAX_PACKET_SIZE=65507;
