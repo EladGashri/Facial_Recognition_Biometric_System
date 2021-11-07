@@ -26,14 +26,15 @@ class Database:
         for index in range(db_df.shape[0]):
             
             employee_type_str = db_df.iloc[index]['employee_type']
-            match employee_type_str:
-                case 'standard':
-                    employee_type = EmployeeType.STANDARD
-               case 'admin':
-                   employee_type = EmployeeType.ADMIN
-               case 'cto':
-                   employee_type = EmployeeType.CTO
-
+            if employee_type_str=='standard':
+                employee_type = EmployeeType.STANDARD
+            elif employee_type_str=='admin':
+                employee_type = EmployeeType.ADMIN
+            elif employee_type_str=='cto':
+                employee_type = EmployeeType.CTO
+            else:
+                continue
+                
             employee = Employee(index, index, id_to_name_dict[index],
                                 '/'.join(db_df.iloc[index]['path'][0].split('\\')[:-1]), employee_type, int(db_df['pic_num'][index]))
 
