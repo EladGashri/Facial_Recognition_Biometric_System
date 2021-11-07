@@ -1,6 +1,6 @@
 The Facial Recognition Biometric System is a final project in Tel Aviv University's Faculty of Engineering. It was developed in collaboration with Amdocs.
 
-In this project we developed a biometric system that uses a facial recognition algorithm. This algorithm was developed by us with Python and Pytorch. . 
+In this project we developed a biometric system that uses a facial recognition algorithm. This algorithm was developed by us with Python and Pytorch. 
 
 As a dataset we chose "Labeled Faces in the Wild" which includes 13,233 images of 5,749 people. The people in the dataset represent the employees of the company.
 
