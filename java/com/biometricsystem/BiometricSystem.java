@@ -22,6 +22,7 @@ public class BiometricSystem {
         LoggerContext logger=(LoggerContext) LoggerFactory.getILoggerFactory();
         logger.getLogger("org.mongodb.driver").setLevel(Level.ERROR);
         logger.getLogger("ai.djl").setLevel(Level.ERROR);
+        logger.getLogger("org.apache").setLevel(Level.ERROR);
         System.setProperty("java.awt.headless", "false");
         ConfigurableApplicationContext app=SpringApplication.run(BiometricSystem.class, args);
         LiveFeedThreadPoolManager poolsGenerator = new LiveFeedThreadPoolManager();
