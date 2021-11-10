@@ -2,7 +2,7 @@ package com.biometricsystem.livefeed.server;
 import java.util.ArrayList;
 
 
-public class  MultiThreadedQueue <T> extends ArrayList<T> {
+public class MultiThreadedQueue <T> extends ArrayList<T> {
 
     public synchronized void enqueue(T toAdd){
         add(toAdd);
