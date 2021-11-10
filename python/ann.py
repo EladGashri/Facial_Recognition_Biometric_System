@@ -85,7 +85,7 @@ class FRBSDataset(Dataset):
 
 
 class Ann:
-    def __init__(self, batch_size=100, epochs=10, lr=1e-3, l2=0.01):
+    def __init__(self, batch_size=100, epochs=10, lr=1e-3, l2=0.01, _patience=30):
 
         self.train_data = Training()
         self.sampler = self.create_sampler()
@@ -109,6 +109,8 @@ class Ann:
         self.scheduler = optim.lr_scheduler.ReduceLROnPlateau(self.optimizer, 'min', verbose=True, patience=7,
                                                               factor=0.1, threshold=0.0001)
         # self.lr_scheduler = torch.optim.lr_scheduler.StepLR(self.optimizer,step_size=100,gamma=0.09)
+
+        self._patience = _patience
 
     def create_sampler(self):
         class_weights = self.train_data.train['class'].value_counts().to_dict()
@@ -161,7 +163,23 @@ class Ann:
             trn_loss = self.training(epoch_ndx, self.train_dl)
             self.all_training_loss.append(trn_loss.detach() / len(self.train_dl))
             val_loss = self.validation(epoch_ndx, self.val_dl)
-            self.all_val_loss.append(val_loss.detach() / len(self.val_dl))
+            #self.all_val_loss.append(val_loss.detach() / len(self.val_dl))
+
+            # early stopping
+
+            if epoch_ndx == 0 or val_loss < track_val_loss:
+                track_val_loss =val_loss
+                val_counter = 0
+                self.save_model()
+            else:
+                val_counter += 1
+            #self.all_val_loss.append(val_loss.detach() / len(self.val_dl))
+
+            if val_counter == self._patience:
+                print("Breaking due to early stopping, best val loss weights were saved to model")
+                break
+        self.load_model()
+
         self.train_data.update_database()
         print("Finished")
 
