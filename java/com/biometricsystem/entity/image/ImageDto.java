@@ -5,12 +5,12 @@ import org.opencv.core.Rect;
 
 public class ImageDto {
 
-    private Employee employee;
+    private double recognitionProbability;
     private FaceRecognitionResult result;
     private String path;
     private boolean faceDetected;
     private Rect faceIndexes;
-    private double recognitionProbability;
+    private Employee employee;
 
 
     public ImageDto(Employee employee, FaceRecognitionResult result, String path, boolean faceDetected, Rect faceIndexes, double recognitionProbability) {
@@ -42,13 +42,8 @@ public class ImageDto {
         return employee;
     }
 
-    public String getPath() {
-        return path;
-    }
-
     public Rect getFaceIndexes() {
         return faceIndexes;
     }
-
 
 }
