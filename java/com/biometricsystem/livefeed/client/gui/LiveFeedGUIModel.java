@@ -21,15 +21,11 @@ public class LiveFeedGUIModel {
 
     public void setCurrentFrame(CapturedFrame frame){
         if (frame.getResult() == FaceRecognitionResult.FACE_RECOGNIZED) {
-            System.out.println("CapturedFrame of recognized face in GUI");
             faceRecognized(frame);
         }else if (frame.getResult() == FaceRecognitionResult.FACE_DETECTED_AND_NOT_RECOGNIZED){
             if(++numberOfUnrecognizedFaces==NUMBER_OF_UNRECOGNIZED_FACES_UNTIL_IDENTIFICATION_BY_ID) {
-                System.out.println("CapturedFrame of unrecognized face is displayed in GUI");
                 numberOfUnrecognizedFaces = 0;
                 identifyById(frame);
-            }else{
-                System.out.println("CapturedFrame of unrecognized face is being skipped in GUI");
             }
         }
     }
